@@ -1,68 +1,51 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+const MyApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+home: Scaffold(
+body: SafeArea(
+child: Column(
+children: [
+Expanded(
+flex: 8,
+child: Container(
+constraints: BoxConstraints.expand(),
+color: Colors.red,
+child: Center(
+child: Text('8',
+style: TextStyle(
+color: Colors.white,
+fontSize: 30,
+),
+)
+),
+)),
+Expanded(
+flex: 5,
+child: Container(
+constraints: BoxConstraints.expand(),
+color: Colors.indigo,
+child: Center(child:
+Text('5',
+style: TextStyle(
+color: Colors.white,
+fontSize: 30,
+),
+)
+),
+)
+)
+],
+))),
+);
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
 }
